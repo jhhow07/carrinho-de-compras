@@ -13,9 +13,20 @@ export class BodyComponent implements OnInit {
     { nome: "Camisa", valor: 150, img: "camisa.png" }
   ];
 
+  totalProducts:number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  count(name: string) {
+    let div = (<HTMLInputElement>document.getElementById('cartBall'));
+    this.totalProducts++;
+    if (this.totalProducts > 0) {
+      div.style.display = 'flex';
+    }
+    console.log(name);
+}
 
 }

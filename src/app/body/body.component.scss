@@ -32,3 +32,19 @@ section {
     font-weight: 600;
     cursor: pointer;
 }
+
+.cartBall {
+    width: 65px;
+    height: 65px;
+    border-radius: 58%;
+    background: #f3e9e9;
+    position: fixed;
+    right: 2%;
+    bottom: 1%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 31px;
+}
