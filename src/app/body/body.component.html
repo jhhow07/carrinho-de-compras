@@ -1,7 +1,7 @@
 <section>
     <div class="d-flex flex-wrap productsBox align-items-center justify-content-around w-100 mt-5">
         <div class="products d-flex align-items-center flex-column m-1" *ngFor="let item of products"
-            (click)="addProducts(item.nome, item.valor);">
+            (click)="addProducts(item.id ,item.nome, item.valor);">
             <div class="h-75 w-75 d-flex align-items-center justify-content-center">
                 <img src="assets/{{item.img}}" alt="products" width="200px">
             </div>
@@ -13,19 +13,24 @@
             </p>
         </div>
     </div>
-    <div class="cartBall" id="cartBall">
+    <div class="cartBall" id="cartBall" *ngIf="this.selectedProducts.length > 0">
         <span>
             {{ this.selectedProducts.length }}
         </span>
     </div>
-    <div class="cart text-white" *ngFor="let item of selectedProducts">
-        <span>
-            {{ item.nome }}
+    <div>
+        <div class="cart text-white" *ngFor="let item of selectedProducts">
+            <span>
+                {{ item.nome }}
+            </span>
+            <span>
+                {{ item.valor }} - Quantidade: {{ item.qtd }}
+            </span>
+            <p (click)="removeItem(item.nome)">x</p>
+        </div>
+        <span *ngIf="this.selectedProducts.length > 0">
+            {{ this.totalProducts }} 
         </span>
-        <span>
-            {{ item.valor }} - Quantidade: {{ item.qtd }}
-        </span>
-        <p (click)="removeItem(item.nome)">x</p>
     </div>
 
 </section>
