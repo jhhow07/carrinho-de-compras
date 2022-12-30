@@ -1,7 +1,7 @@
 <section>
     <div class="d-flex flex-wrap productsBox align-items-center justify-content-around w-100 mt-5">
         <div class="products d-flex align-items-center flex-column m-1" *ngFor="let item of products"
-            (click)="addProducts(item.id ,item.nome, item.valor);">
+            (click)="addProducts(item.id ,item.nome, item.valor, item.img);">
             <div class="h-75 w-75 d-flex align-items-center justify-content-center">
                 <img src="assets/{{item.img}}" alt="products" width="200px">
             </div>
@@ -18,19 +18,21 @@
             {{ this.selectedProducts.length }}
         </span>
     </div>
-    <div>
-        <div class="cart text-white" *ngFor="let item of selectedProducts">
-            <span>
-                {{ item.nome }}
-            </span>
-            <span>
-                {{ item.valor }} - Quantidade: {{ item.qtd }}
-            </span>
-            <p (click)="removeItem(item.nome)">x</p>
+    <div class="cartBadge">
+        <div class=" d-flex cart text-white p-2" *ngFor="let item of selectedProducts">
+            <img src="assets/{{item.img}}" width="75px" alt="">
+            <div class="d-flex flex-column">
+                <span>
+                    {{ item.nome }}
+                </span>
+                <span class="d-inline-flex">
+                    Valor: R${{ item.valor }}
+                </span>
+                Quantidade: {{ item.qtd }}
+                <p (click)="removeItem(item.nome)">x</p>
+            </div>
         </div>
-        <span *ngIf="this.selectedProducts.length > 0">
-            {{ this.totalProducts }} 
-        </span>
+        <span *ngIf="this.selectedProducts.length > 0"> Total: R${{ this.totalProducts }}</span>
     </div>
 
 </section>

@@ -23,7 +23,7 @@ export class BodyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addProducts(id:number, name: string, valor: number) {
+  addProducts(id:number, name: string, valor: number, img: string) {
     let div = (<HTMLInputElement>document.getElementById('cartBall'));
     let product;
      if (!this.selectedProducts.some((x) => x.nome == name)) {
@@ -31,7 +31,8 @@ export class BodyComponent implements OnInit {
         id: id,
         nome: name,
         valor: valor,
-        qtd: this.quantity
+        qtd: this.quantity,
+        img: img
       });
       } else {
         this.selectedProducts.find(x => {
