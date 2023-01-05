@@ -20,7 +20,8 @@
     </div>
     <div class="cartBadge">
         <div class=" d-flex cart text-white p-2" *ngFor="let item of selectedProducts">
-            <img src="assets/{{item.img}}" width="75px" alt="">
+            <img (mouseover)="displayImg(item.img)" src="assets/{{item.img}}" width="90px" alt="">
+            <div id="bigImg"></div>
             <div class="d-flex flex-column">
                 <span>
                     {{ item.nome }}

@@ -17,6 +17,7 @@ export class BodyComponent implements OnInit {
   selectedProducts: SelectedProducts[] = [];
   quantity: number = 1;
   totalProducts: number = 0;
+  showImage: boolean = false;
 
   constructor() { }
 
@@ -48,7 +49,7 @@ export class BodyComponent implements OnInit {
   }
 
   removeItem(name: string) {
-    this.selectedProducts = this.selectedProducts.filter(x => x.nome != name);
+    // this.selectedProducts = this.selectedProducts.filter(x => x.nome != name);
   }
 
   totalVal(obj: any): number {
@@ -59,4 +60,10 @@ export class BodyComponent implements OnInit {
     return total
   }
 
+  displayImg(img: string) {
+    let bigImg = (<HTMLInputElement>document.querySelector('#bigImg'));
+    bigImg.innerHTML = `<img src='assets/${img}' width='90px'>`;
+  }
+
+  
 }
