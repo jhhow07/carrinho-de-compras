@@ -26,7 +26,6 @@ export class BodyComponent implements OnInit {
 
   addProducts(id:number, name: string, valor: number, img: string) {
     let div = (<HTMLInputElement>document.getElementById('cartBall'));
-    let product;
      if (!this.selectedProducts.some((x) => x.nome == name)) {
       this.selectedProducts.push({
         id: id,
@@ -42,14 +41,21 @@ export class BodyComponent implements OnInit {
           }
         });
       };
-    // if (this.selectedProducts.length > 0) {
-    //   div.style.display = 'flex';
-    // };
     this.totalProducts = this.totalVal(this.selectedProducts);
   }
 
-  removeItem(name: string) {
-    // this.selectedProducts = this.selectedProducts.filter(x => x.nome != name);
+  removeItem(id: number) {
+    this.selectedProducts.find(x => {
+      if(x.id == id){
+        x.qtd--
+      };
+      this.selectedProducts.forEach(element => {
+        if(element.qtd < 1) {
+          this.selectedProducts = this.selectedProducts.filter(x => x.id != id);
+        } 
+      });
+    });
+    this.totalProducts = this.totalVal(this.selectedProducts)
   }
 
   totalVal(obj: any): number {
@@ -60,10 +66,9 @@ export class BodyComponent implements OnInit {
     return total
   }
 
-  displayImg(img: string) {
-    let bigImg = (<HTMLInputElement>document.querySelector('#bigImg'));
-    bigImg.innerHTML = `<img src='assets/${img}' width='90px'>`;
-  }
+  // openCart() {
+  //   let cart = (<HTMLInputElement>document.getElementById('cartBadge'));
+  //   cart.style.display = 'block' || 'none';
+  // };
 
-  
 }

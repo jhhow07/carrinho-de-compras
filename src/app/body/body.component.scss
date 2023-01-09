@@ -51,8 +51,10 @@ section {
 
 .cartBadge {
     background: black;
+    display: none;
     position: fixed;
     right: 0%;
     top: 10%;
     padding-right: 10%;
+    border-radius: 8px;
 }

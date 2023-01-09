@@ -13,14 +13,15 @@
             </p>
         </div>
     </div>
-    <div class="cartBall" id="cartBall" *ngIf="this.selectedProducts.length > 0">
+    <div data-toggle="modal" data-target=".cartBadge" class="cartBall" id="cartBall" 
+    *ngIf="this.selectedProducts.length > 0">
         <span>
             {{ this.selectedProducts.length }}
         </span>
     </div>
-    <div class="cartBadge">
+    <div id="cartBadge" class="cartBadge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class=" d-flex cart text-white p-2" *ngFor="let item of selectedProducts">
-            <img (mouseover)="displayImg(item.img)" src="assets/{{item.img}}" width="90px" alt="">
+            <img src="assets/{{item.img}}" width="90px" alt="">
             <div id="bigImg"></div>
             <div class="d-flex flex-column">
                 <span>
@@ -30,7 +31,7 @@
                     Valor: R${{ item.valor }}
                 </span>
                 Quantidade: {{ item.qtd }}
-                <p (click)="removeItem(item.nome)">x</p>
+                <p (click)="removeItem(item.id)">x</p>
             </div>
         </div>
         <span *ngIf="this.selectedProducts.length > 0"> Total: R${{ this.totalProducts }}</span>
