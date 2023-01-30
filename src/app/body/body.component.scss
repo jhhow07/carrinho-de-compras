@@ -50,11 +50,30 @@ section {
 }
 
 .cartBadge {
-    background: black;
+    background: #000000f5;
     display: none;
     position: fixed;
+    width: 50vh;
     right: 0%;
     top: 10%;
     padding-right: 10%;
     border-radius: 8px;
+    outline: none !important;
+}
+
+.totalVal {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button {
+    background-color: #1e4abc !important;
+    color: white !important;
+    font-size: 20px !important;
+    outline: none !important;
+}
+
+.footerModal {
+    gap: 15px;
 }

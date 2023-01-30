@@ -13,13 +13,13 @@
             </p>
         </div>
     </div>
-    <div data-toggle="modal" data-target=".cartBadge" class="cartBall" id="cartBall" 
+    <div data-toggle="modal" data-target=".cartBadge" data-backdrop="false" class="cartBall" id="cartBall" 
     *ngIf="this.selectedProducts.length > 0">
         <span>
             {{ this.selectedProducts.length }}
         </span>
     </div>
-    <div id="cartBadge" class="cartBadge" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="cartBadge" class="cartBadge" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
         <div class=" d-flex cart text-white p-2" *ngFor="let item of selectedProducts">
             <img src="assets/{{item.img}}" width="90px" alt="">
             <div id="bigImg"></div>
@@ -34,7 +34,10 @@
                 <p (click)="removeItem(item.id)">x</p>
             </div>
         </div>
-        <span *ngIf="this.selectedProducts.length > 0"> Total: R${{ this.totalProducts }}</span>
+        <div class="w-100 pb-3 pt-5 d-flex flex-column justify-content-center align-items-center footerModal">
+            <span class="totalVal" *ngIf="this.selectedProducts.length > 0"> Valor total: R${{ this.totalProducts }}</span>
+            <button (click)="purchase(this.totalProducts)" mat-button color="primary">Finalizar compra</button>
+        </div>
     </div>
 
 </section>

@@ -1,6 +1,8 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { SelectedProducts } from '../interfaces/selected-products';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-body',
@@ -18,10 +20,12 @@ export class BodyComponent implements OnInit {
   quantity: number = 1;
   totalProducts: number = 0;
   showImage: boolean = false;
-
+  userCredit: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+    const credit = Number(localStorage.getItem("token"));
+    this.userCredit = credit;
   }
 
   addProducts(id:number, name: string, valor: number, img: string) {
@@ -66,9 +70,14 @@ export class BodyComponent implements OnInit {
     return total
   }
 
-  // openCart() {
-  //   let cart = (<HTMLInputElement>document.getElementById('cartBadge'));
-  //   cart.style.display = 'block' || 'none';
-  // };
-
+  purchase(totalVal: number) {
+    if(totalVal <= this.userCredit) {
+      localStorage.setItem("token", JSON.stringify(this.userCredit -= totalVal));
+      alert('Compra finalizada com sucesso!');
+      return location.reload();
+    }
+    else {
+      return alert('Você não tem crédito suficiente!');
+    }
+  }
 }

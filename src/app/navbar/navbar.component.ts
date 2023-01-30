@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as $AB from 'jquery';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const numero = Number(localStorage.getItem("token"))
+    const numero = Number(localStorage.getItem("token"));
     this.credit = numero;
   }
 
@@ -23,6 +25,9 @@ export class NavbarComponent implements OnInit {
     }
      else {
       this.credit += number;
+      $('#myModal').modal('hide');
+      alert('Crédito recarregado com sucesso');
+      location.reload();
     }
 
     localStorage.setItem("token", JSON.stringify(this.credit));
